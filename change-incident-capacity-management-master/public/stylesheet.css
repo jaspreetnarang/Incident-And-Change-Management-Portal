@@ -1,0 +1,89 @@
+/* Bordered form */
+form {
+    border: 2px solid #f1f1f1;
+    background-color: #E8F5E9;
+    width:50%;
+    margin: 30px auto;
+    border-radius: 10px;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password],input[type=email] {
+    width: 100%;
+    padding: 8px 8px;
+    margin: 8px 0;
+    border-radius: .25rem;
+    display: inline-block;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #388E3C;
+    color: white;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    width: 80px;
+
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 08px 0 12px 0;
+  }
+/* Avatar image */
+img.avatar {
+    width: 20%;
+    height:20%;
+    border-radius: 20%;
+    margin-top: 2%;
+}
+
+
+/* Add padding to containers */
+.container {
+  width: 50%;
+    padding: 16px;
+
+}
+
+#register{
+    text-decoration : none;
+    color : #388E3C;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+}
+
+a{
+    text-decoration :none ;
+    color : #388E3C;
+}
+
+
+#div{
+    visibility:hidden; 
+    margin-top:15px;
+    color:red;
+}

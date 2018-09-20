@@ -1,0 +1,37 @@
+<%include ../partials/header%>
+<%include ../partials/incidentaside%>
+<div id="onright">
+  <div class="container">
+      
+        <div class="jumbotron" id="jumbo">
+    <h3>Pending Action Plans</h3>
+    </div>
+    <div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <div class="table-responsive" id="list_table1">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Incident Number</th>
+              <th>Responsibility</th>
+              <th>Request Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% incident.forEach(function(incident){%>
+                <tr>
+                  <td><%= incident.incidentNum%> </td>
+                  <td><%= incident.responsibility%></td>
+                  <td><%= incident.date.toDateString()%></td>
+                </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      </div>
+<%include ../partials/footer%>

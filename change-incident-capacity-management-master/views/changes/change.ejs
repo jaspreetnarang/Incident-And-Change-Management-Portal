@@ -1,0 +1,166 @@
+<%include ../partials/header%>
+<%include ../partials/changeaside%>
+
+<div id="onright">
+  <div class="container">
+    <div class="jumbotron" id="jumbo">
+    <h3>List of Change Requests</h3>
+    </div>
+    <div>
+    <div class="d-flex">
+    <div class="mr-auto p-2">
+      <button id="btnExport" class="btn btn-success" onclick="fnExcelReport();"> Export To Excel </button>
+    </div>
+    <div class="p-2">
+      <button type="button" class="btn btn-success" data-title="Filter By Date" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" id="filter">Filter By Date</button>
+    </div>
+    </div>
+    <div id="popover-content" style="display:none">
+      <form action="/change/filter" method="POST" class="form">
+       From: <input type="date" name="start_date" class="form-control">
+       To: <input type="date" name="end_date" class="form-control"><br>
+    <center><input type="submit" class="btn btn-secondary"  value="Go"></center>
+    </form>
+    </div>
+    <div class="container" >
+    <div class="row">
+      <div class="col-xs-10">
+        <div class="table-responsive" id="list_table1">
+          <table class="table table-bordered table-hover" id="headerTable">
+            <thead>
+              <tr>
+                <th>Change Number</th>
+                <th>Type Of Change</th>
+                <th>Date of Change Request</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div>
+              <% change.forEach(function(change){%>
+                <tr data-toggle="modal" data-target=".myModal">
+                  <td><%= change.changeNum%> </td>
+                  <td><%= change.type%></td>
+                  <td><%=change.date.toDateString()%></td>
+                  <td><%= change.status%></td>
+                </tr>
+                
+                  <!-- The Modal -->
+                  <div class="myModal modal fade" id="">
+                    <div class="modal-dialog modal-dialog-centered" id="#content">
+                      <div class="modal-content">
+                      
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <button class="cmd btn btn-success" >generate PDF</button>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          <div class="content">
+                            <h5>Change Number:<%= change.changeNum%></h5> 
+                            <h5>Date of Request:<%=change.date.toDateString()%> </h5>
+                            <h5>Requester Name:<%=change.reqName%></h5>
+                            <h5>Change Type:<%= change.type%></h5>
+                            <p>Reason : <%=change.reason%></p>
+                            <h6>Status: <%= change.status%></h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+              <%})%>
+              </div>
+            </tbody>
+          </table>
+          <iframe id="txtArea1" style="display:none"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  //   var tr = $('tr');
+  //   var model = $('.mymodelclass');
+  // for(var i=0;i<tr.length;i++){
+    // $( "tr" ).hover(
+    //   function() {
+    //     $(model[i]).classList.add('.myModel');
+    //   }, function() {
+    //   $(model[i]).classList.remove('.myModel');
+    //   }
+    // );
+  // }
+// $('tr').hover(function(){
+// $(this).next().addClass('.myModal');
+// $(this).click(function(){
+//   $('.myModal').toggleClass('modal')
+// });
+// },function(){
+// $(this).next().removeClass('.myModal');
+// });
+
+
+  var doc = new jsPDF('p', 'pt', 'letter');
+  var specialElementHandlers = {
+      '.editor': function (element, renderer) {
+          return true;
+      }
+  };
+
+  $('.cmd').click(function () {
+    doc.setFont("helvetica");
+    doc.setFontSize(14);
+      doc.fromHTML($('.content').html(), 15, 15, {
+          'width': 170,
+              'elementHandlers': specialElementHandlers
+      });
+      doc.save('file.pdf');
+  });
+  
+ 
+  $('[data-toggle="popover"]').popover({
+     html: true, 
+	   content: function() {
+          return $('#popover-content').html();
+        }
+  });
+ function fnExcelReport()
+{
+    var tab_text="<table border='2px'><tr bgcolor='#87AFC6'>";
+    var textRange; var j=0;
+    tab = document.getElementById('headerTable'); // id of table
+
+    for(j = 0 ; j < tab.rows.length ; j++) 
+    {     
+        tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
+        //tab_text=tab_text+"</tr>";
+    }
+
+    tab_text=tab_text+"</table>";
+    tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+    tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
+    tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE "); 
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+    {
+        txtArea1.document.open("txt/html","replace");
+        txtArea1.document.write(tab_text);
+        txtArea1.document.close();
+        txtArea1.focus(); 
+        sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+    }  
+    else                 //other browser not tested on IE 11
+        sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
+
+    return (sa);
+}
+  
+ 
+</script>
+<%include ../partials/footer%>

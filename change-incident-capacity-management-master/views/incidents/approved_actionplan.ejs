@@ -1,0 +1,40 @@
+<%include ../partials/header%>
+<%include ../partials/incidentaside%>
+<div id="onright">
+  <div class="container">
+        <div class="jumbotron" id="jumbo">
+    <h3>Approved/Disapproved Action Plans</h3>
+    </div>
+    <div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <div class="table-responsive" id="list_table1">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Incident Number</th>
+              <th>Date of request</th>
+              <th>Approving Date</th>
+              <th>Status</th>
+               <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% incident.forEach(function(incident){ %>
+                    <tr>
+                      <td><%= incident.incidentNum%> </td>
+                      <td><%=incident.date.toDateString()%></td>
+                      <td><%= incident.appdate.toDateString()%></td>
+                      <td><%= incident.status%></td>
+                      <td><%= incident.comments%></td>
+                    </tr>
+                  <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<%include ../partials/footer%>

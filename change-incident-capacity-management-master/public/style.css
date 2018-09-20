@@ -1,0 +1,187 @@
+/*nav bar*/
+.navbar{
+  font-size: 20px;
+  width:100%;
+  padding: 0;
+  height: 70px;
+}
+
+/* ds logo*/
+img{
+  margin-left: 5px;
+  width:60px;
+  height: 60px;
+}
+
+#logout{
+  color:#fff;
+  margin-right:5px;
+  text-decoration:none;
+}
+/*side list */
+aside{
+  width:300px;
+  height:100%;
+  float:left;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+}
+aside div ul {
+  text-align: center;
+  padding:20px 0px;
+  margin-left:0;
+  color: white;
+
+
+}
+aside div ul  a{
+  width:100%;
+  height:100%;
+  padding:0px;
+
+  text-decoration:none;
+  color:gray;
+}
+
+aside div ul  a:hover{
+  text-decoration: none;
+  color: #1c7430;
+}
+
+
+
+/*  left horizontal lines Gradient transparent - color - transparent */
+hr.style {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+
+
+/* navbar underline Gradient color1 - color2 - color1 */
+
+hr.style-one {
+    margin:0;
+    padding: 0;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+/*  form content*/
+#onright{
+  margin-left:300px;
+  width:70%;
+  padding: 0 70px;
+  text-transform: capitalize;
+  border-left: 2px solid gray;
+}
+a{
+  color:#d8dfe6;
+}
+
+.container{
+  padding: 20px 50px;
+  background-color: #E8F5E9;
+  border-radius: 15px;
+}
+  /*  form textfield style*/
+.form-control:focus{
+  border-color:#7B1FA2;
+}
+
+.form-group{
+  padding: 20px auto;
+}
+/*  submit button*/
+.button {
+position: relative;
+  top: 0px;
+  left: 340px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color:green ;
+    color: white;
+}
+
+.button:active{
+  transform: translateY(4px);
+}
+
+
+/*input text style*/
+.text{
+    border-color: gray;
+}
+
+
+/*jumbotron container*/
+#container{
+  padding: 20px auto;
+  margin: 20px auto;
+  height: 100%;
+  width: 100%
+}
+/*profile icon*/
+#user{
+  height:150px;
+  width: 150px;
+  margin-left: 50%;
+  border-radius: 10%;
+}
+
+.jumbotron{
+  background-color:#E8F5E9;
+  height: 175px;
+  width: 100%;
+  padding: 30px 10px;
+  margin-bottom : 0px;
+}
+
+#jumbo{
+  text-align: center;
+  width:100%;
+  height: 100%;
+}
+
+.hometable{
+  text-align: center;
+}
+
+.hometable div div a{
+  text-decoration: none;
+  color: #000;
+}
+
+
+/*approved_requests table*/
+#list_table{
+  text-align: center;
+  table-layout: auto;
+}
+
+/*pending_requests table*/
+#list_table1{
+  text-align: center;
+  table-layout: auto;
+}
+
+/*List change req*/
+.modal-body{
+  text-align:left;
+}
+
+.status{
+  margin: 10%;
+}
+.statustext{
+  max-width: 300px;
+  margin:auto;
+}

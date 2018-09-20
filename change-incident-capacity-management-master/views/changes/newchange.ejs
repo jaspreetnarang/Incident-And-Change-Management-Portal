@@ -1,0 +1,91 @@
+<%include ../partials/header%>
+<%include ../partials/changeaside%>
+</div>
+</aside>
+<div id="onright">
+  <div class="container">
+    <form action="/change" method="POST">
+      <div class="form-group row">
+        <label for="name" class="col-3 col-form-label">Change Number</label>
+        <div class="col-9">
+          <input class="form-control text" type="text" name="change[changeNum]" value="<%=changeId%>" readonly="readonly">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="name" class="col-3 col-form-label">Requester Name</label>
+        <div class="col-9">
+          <input class="form-control text" type="text" value="<%= username%>" name="change[reqName]" readonly>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="name" class="col-3 col-form-label">Request To</label>
+        <div class="col-9">
+          <div class="input-group">
+            <select class="custom-select text" name="change[receiver]>
+            <optgroup label="Add Sender">
+              <% sender.forEach(function(senders){%>
+              <option value="<%= senders.email%>"><%= senders.name%></option>
+             <%})%>
+             <option selected>Open this to select </option>
+            </optgroup>
+            </select>
+        </div>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label for="type" class="col-3 col-form-label">type of change</label>
+        <div class="col-9">
+          <input class="form-control text" type="search" value="" name="change[type]" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="priority" class="col-3 col-form-label">priority</label>
+        <div class="col-9">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-success">
+              <input type="radio" name="change[priority]" value="High" id="option1" autocomplete="off" checked> High
+            </label>
+            <label class="btn btn-success">
+              <input type="radio" name="change[priority]" value="Medium" id="option2" autocomplete="off"> Medium
+            </label>
+            <label class="btn btn-success">
+              <input type="radio" name="change[priority]" value="Low" id="option3" autocomplete="off"> Low
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Reason" class="col-3 col-form-label">Reason for change</label>
+        <div class="col-9" >
+          <textarea class=" form-control text" rows="3" id="Reason" name="change[reason]" required></textarea>
+        </div>
+      </div>
+       
+      <div class="form-group row">
+        <label for="Down-Time-Required" class="col-3 col-form-label">Down Time Required</label>
+        <div class="col-9">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-success">
+              <input type="radio" name="change[downtime]" value="Yes" id="option1" autocomplete="off" checked> Yes
+            </label>
+            <label class="btn btn-success">
+              <input type="radio" name="change[downtime]" value="No" id="option2" autocomplete="off"> No
+            </label>
+          </div>
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="capacity-downtime" class="col-3 col-form-label">Mention Downtime (if required)</label>
+            <div class="col-9">
+                <input class="form-control text" type="text" name="change[downtime]">
+            </div>
+        </div>
+      <div class="form-group">
+        <input type="Submit" name="submit" placeholder="submit" class="btn button btn-success ">
+      </div>
+    </form>  
+  </div>
+</div>
+
+<%include ../partials/footer%>

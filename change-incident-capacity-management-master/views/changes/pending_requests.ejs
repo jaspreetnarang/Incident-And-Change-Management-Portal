@@ -1,0 +1,40 @@
+<%include ../partials/header%>
+<%include ../partials/changeaside%>
+</div>
+</aside>
+<div id="onright">
+  <div class="container">
+      
+        <div class="jumbotron" id="jumbo">
+    <h3>Pending Requests</h3>
+    </div>
+    <div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <div class="table-responsive" id="list_table1">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Change Number</th>
+              <th>Type Of Change</th>
+              <th>Request Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% change.forEach(function(change){%>
+                <tr>
+                  <td><%= change.changeNum%> </td>
+                  <td><%= change.type%></td>
+                  <td><%= change.date.toDateString()%></td>
+                </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+      
+      </div>
+      </div>
+<%include ../partials/footer%>

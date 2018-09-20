@@ -1,0 +1,42 @@
+<%include ../partials/header%>
+<%include ../partials/capacityaside%>
+<div id="onright">
+  <div class="container">
+        <div class="jumbotron" id="jumbo">
+    <h3>Approved/Disapproved Capacity Requests</h3>
+    </div>
+    <div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <div class="table-responsive" id="list_table1">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+                  <th>Request Number</th>
+                  <th>Type Of Capacity</th>
+                  <th>Date of request</th>
+                  <th>Approving Date</th>
+                  <th>Status</th>
+                  <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+           <% capacity.forEach(function(capacity){ %>
+                    <tr>
+                      <td><%= capacity.capacityNum%> </td>
+                      <td><%= capacity.type%></td>
+                      <td><%= capacity.date.toDateString()%></td>
+                      <td><%= capacity.appdate.toDateString()%></td>
+                      <td><%= capacity.status%> </td>
+                      <td><%= capacity.comments%></td>
+                    </tr>
+                  <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      </div>
+<%include ../partials/footer%>

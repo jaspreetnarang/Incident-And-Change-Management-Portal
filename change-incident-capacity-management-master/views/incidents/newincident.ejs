@@ -1,0 +1,133 @@
+<%include ../partials/header%>
+<%include ../partials/incidentaside %>
+<div id="onright">
+    <div class="container">
+        <form action="/incident" method="POST">
+        <div class="form-group row">
+            <label for="incident-num" class="col-3 col-form-label">Incident Number</label>
+            <div class="col-9">
+                <input class="form-control text" type="text" name="incident[incidentNum]" value="<%=incidentId%>" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group row">
+        <label for="name" class="col-3 col-form-label">Requester Name</label>
+        <div class="col-9">
+          <input class="form-control text" type="text" value="<%= username%>" name="incident[reqName]" readonly>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="name" class="col-3 col-form-label">Request To</label>
+        <div class="col-9">
+          <div class="input-group">
+            <select class="custom-select text" name="incident[receiver]>
+             <optgroup label="Add Sender">
+              <% sender.forEach(function(senders){%>
+              <option value="<%= senders.email%>"><%= senders.name%></option>
+             <%})%>
+             <option selected>Open this to select </option>
+            </optgroup>
+            </select>
+        </div>
+        </div>
+      </div>
+        <div class="form-group row">
+            <label for="incident-date" class="col-3 col-form-label">Incident Date/Time</label>
+            <div class="col-9">
+                <input class="form-control text" type="datetime-local" name="incident[dateOfIncident]" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="location" class="col-3 col-form-label">Incident Location</label>
+            <div class="col-9">
+                <input class="form-control text" type="text" name="incident[location]" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Facts Of Incident" class="col-3 col-form-label">Facts Of Incident</label>
+            <div class="col-9" >
+                <textarea class=" form-control text" rows="3" name="incident[factsOfIncident]" required></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="rca" class="col-3 col-form-label">RCA</label>
+            <div class="col-9">
+                <textarea class=" form-control text" rows="3" name="incident[rca]" required></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="priority" class="col-3 col-form-label">Discussion With ISM Team</label>
+            <div class="col-9">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-success">
+                    <input type="radio" name="incident[discussion]" id="option1" autocomplete="off" checked> Yes
+                </label>
+                <label class="btn btn-success">
+                    <input type="radio" name="incident[discussion]" id="option2" autocomplete="off"> No
+                </label>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<br>
+<div id="onright">
+    <div class="container" id="actionplan">
+        <h5>Action Plan</h5><br>
+        <div class="form-group row">
+            <label for="incident-num" class="col-3 col-form-label">Corrective Plan</label>
+            <div class="col-9">
+                <input class="form-control text" type="text" value="<%=incidentId%>" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description" class="col-3 col-form-label">Description</label>
+            <div class="col-9" >
+                <textarea class=" form-control text" rows="3" name="incident[description]" required></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="responsibilty" class="col-3 col-form-label">Responsiblity</label>
+            <div class="col-9">
+                <input class="form-control text" type="text" name="incident[responsibility]" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="incident-date" class="col-3 col-form-label">Start Date</label>
+            <div class="col-9">
+                <input class="form-control text" type="datetime-local" name="incident[startDate]">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="incident-date" class="col-3 col-form-label">Completion Date</label>
+            <div class="col-9">
+                <input class="form-control text" type="datetime-local" name="incident[completionDate]">
+            </div>
+        </div>
+        <div class="form-group row">
+        <label for="Down-Time-Required" class="col-3 col-form-label">Down Time Required</label>
+        <div class="col-9">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-success">
+              <input type="radio" name="incident[downtime]" value="Yes" id="option1" autocomplete="off" checked> Yes
+            </label>
+            <label class="btn btn-success">
+              <input type="radio" name="incident[downtime]" value="No" id="option2" autocomplete="off"> No
+            </label>
+          </div>
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="incident-downtime" class="col-3 col-form-label">Mention Downtime (if required)</label>
+            <div class="col-9">
+                <input class="form-control text" type="text" name="incident[downtime]">
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn button btn-success ">submit</button>
+        </div>
+      </div>
+        
+        </form>
+    </div>
+</div>
+<%include ../partials/footer%> 

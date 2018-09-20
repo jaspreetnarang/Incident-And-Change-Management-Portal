@@ -1,0 +1,77 @@
+<%include partials/header%>
+  <div class="container" id="container">
+    <div class="jumbotron">
+      <div style="width:100%">
+        <div style="float:left;width:50%">
+      <div class="userimg">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ93R8hURsVEMC_-WMT6X5VfSl3kTqvaK9_CrzFNT0ikf_gub_l" id="user">
+      </div>
+   </div>
+      <div style="float:right;width:50%">
+        <h2>WELCOME!!</h2>
+        <h4 style="text-transform: capitalize"><%= currentUser.username%></h4>
+      </div>
+        </div>
+      </div>
+    </div>
+      <div class="container" id="container">
+        <center><h3>Status</h3></center>
+        <div class="hometable">
+          <div class="row">
+            <div class="col">
+              <h5>Change Request</h5>
+            </div>
+            <div class="col">
+              <h5>Incident Request</h5>
+            </div>
+            <div class="col">
+              <h5>Capacity Request</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a href="/change">Total Requests : <%= totalcr %></a>
+            </div>
+            <div class="col">
+              <a href="/incident">Total Requests : <%= totalir%></a>
+            </div>
+            <div class="col">
+              <a href="/capacity">Total Requests : <%= totalcapr%></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a href="/change/approved">Approved Requests : <%= approvedcr %></a>
+            </div>
+            <div class="col">
+              <a href="/incident/approved">Approved Requests : <%= approvedir%></a>
+            </div>
+             <div class="col">
+              <a href="/capacity/approved">Approved Requests : <%= approvedcapr%></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a href="/change/approved">Disapproved Requests : <%= disapprovedcr%></a>
+            </div>
+            <div class="col">
+              <a href="/incident/approved">Disapproved Requests : <%= disapprovedir%></a>
+            </div>
+             <div class="col">
+              <a href="/capacity/approved">Disapproved Requests : <%= disapprovedcapr%></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a href="/change/pending">Pending Requests : <%= pendingcr%></a>
+            </div>
+            <div class="col">
+              <a href="/incident/pending">Pending Requests : <%= pendingir%></a>
+            </div>
+             <div class="col">
+              <a href="/capacity/pending">Pending Requests : <%= pendingcapr%></a>
+            </div>
+          </div>
+      </div>
+    </div>
+<%include partials/footer%>

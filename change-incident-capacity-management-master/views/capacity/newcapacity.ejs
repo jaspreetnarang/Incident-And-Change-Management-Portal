@@ -1,0 +1,88 @@
+<%include ../partials/header%>
+<%include ../partials/capacityaside%>
+<div id="onright">
+  <div class="container">
+      <form action="/capacity" method="POST">
+        <div class="form-group row">
+          <label for="name" class="col-3 col-form-label">Request Number</label>
+          <div class="col-9">
+            <input class="form-control text" type="text" name="capacity[capacityNum]" value="<%=capacityId%>" readonly="readonly">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-3 col-form-label">Requester Name</label>
+          <div class="col-9">
+            <input class="form-control text" type="text" value="<%= username%>" name="capacity[reqName]" readonly>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-3 col-form-label">Request To</label>
+          <div class="col-9">
+            <div class="input-group">
+              <select class="custom-select text" name="capacity[receiver]>
+               <optgroup label="Add Sender">
+                <% sender.forEach(function(senders){%>
+                <option value="<%= senders.email%>"><%= senders.name%></option>
+               <%})%>
+               <option selected>Open this to select </option>
+              </optgroup>
+              </select>
+          </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Type" class="col-3 col-form-label">Type of Capacity Change</label>
+          <div class="col-9">
+            <input class="form-control text" type="text" name="capacity[type]" id="Type">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Location" class="col-3 col-form-label">Location</label>
+          <div class="col-9">
+            <input class="form-control text" type="text" name="capacity[location]" id="Location">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="capacity-detail" class="col-3 col-form-label">Capacity Request Detail</label>
+          <div class="col-9" >
+            <textarea class="form-control text" rows="3" name="capacity[detail]" id="capacity-detail"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="cost" class="col-3 col-form-label">Cost Involved(Approx)</label>
+          <div class="col-9">
+            <input class="form-control text" type="text" name="capacity[cost]" id="cost">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Impact" class="col-3 col-form-label">Impact Of Capacity Change</label>
+          <div class="col-9" >
+            <textarea class="form-control text" rows="3" name="capacity[impact]" id="Impact"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+        <label for="Down-Time-Required" class="col-3 col-form-label">Down Time Required</label>
+        <div class="col-9">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-success">
+              <input type="radio" name="capacity[downtime]" value="Yes" id="option1" autocomplete="off" checked> Yes
+            </label>
+            <label class="btn btn-success">
+              <input type="radio" name="capacity[downtime]" value="No" id="option2" autocomplete="off"> No
+            </label>
+          </div>
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="capacity-downtime" class="col-3 col-form-label">Mention Downtime (if required)</label>
+            <div class="col-9">
+                <input class="form-control text" type="text" name="capacity[downtime]">
+            </div>
+        </div>
+        <div class="form-group">
+          <button class="btn button btn-success ">submit</button>
+        </div>
+      </form> 
+    </div>
+</div>
+<%include ../partials/footer%> 
